@@ -1,19 +1,20 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import 'dotenv/config';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAHDodEbavomEr3cztdf_sO2MDFjDA6p0g",
-  authDomain: "gilberny-newblog.firebaseapp.com",
-  projectId: "gilberny-newblog",
-  storageBucket: "gilberny-newblog.firebasestorage.app",
-  messagingSenderId: "788256712040",
-  appId: "1:788256712040:web:03df7661f45e6ddfb862dd",
-  measurementId: "G-F0LS6PCG9P"
+  apiKey: REACT_APP_FIREBASE_API_KEY,
+  authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: REACT_APP_FIREBASE_APP_ID,
+  measurementId: REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
