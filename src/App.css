@@ -16,7 +16,6 @@ button {
 h3, h4 {
   margin-bottom: 0;
 }
-
 nav {
   border-bottom: 4px solid black;
   text-align: center;
@@ -166,6 +165,6 @@ video{
 footer{
   position: fixed;
   bottom: 0;
-  right: 0;
+  right: 50%;
 
 }

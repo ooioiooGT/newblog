@@ -6,6 +6,8 @@ import ContactPage from './Page/ContactPage.js';
 import ArticlesListPage from './Page/ArticlesListPage.js';
 import ArticlePage from './Page/Articlepage.js';
 import NavBar from './NavBar.js';
+import LoginPage from './Page/LoginPage.js';
+import SignUpPage from './Page/SignUpPage.js';
 
 function App() {
   return (
@@ -20,8 +22,11 @@ function App() {
             <Route path='/contact' element={<ContactPage/>}/>
             <Route path='/articles' element={<ArticlesListPage/>}/>
             <Route path='/articles/:articleId' element={<ArticlePage/>}/>
+            <Route path='/login' element={<LoginPage/>}/>
+            <Route path='/signup' element={<SignUpPage/>}/>
           </Routes>
         </div>
+        <footer>&copy;Gilber Chen 2025</footer>
       </div>
     </BrowserRouter>
    
