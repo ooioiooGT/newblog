@@ -166,37 +166,58 @@ input, textarea {
 /* contact page css */
 .contact-page {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Default to stacking for mobile view */
   align-items: center;
   justify-content: center;
-  padding: 0 5%; /* Reduce padding for smaller screens */
-  min-height: 100vh; /* Center content vertically */
+  min-height: 100vh; /* Full height for vertical centering */
   text-align: center;
+  padding: 5%
 }
 
 .contact-container {
   display: flex;
-  gap: 40px;
+  flex-direction: column; /* Default stacking for mobile view */
+  gap: 20px; /* Add spacing between sections */
+  width: 100%; /* Full width for responsiveness */
+  max-width: 800px; /* Limit container width */
   justify-content: center;
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
-  text-align: center;
+  align-items: center; /* Center-align content */
 }
 
 .contact-form, .contact-details {
-  flex: 1 1 100%; /* Allow full-width on smaller screens */
-  max-width: 500px; /* Limit the width */
-  margin: 10px 0; /* Add spacing between sections */
+  width: 100%; /* Full width for mobile view */
+  max-width: 400px; /* Limit the width */
+  text-align: left; /* Align text to the left */
 }
-
-.contact-details {
-  text-align: left; /* Align text for readability */
-}
-
 .social-icons img {
-  width: 10%; /* Keep icons responsive */
+ width: 10%;
 }
 
+
+
+/* footer css */
+footer{
+  position: fixed;
+  bottom: 0;
+}
+/* For larger screens (desktop view) */
 @media (min-width: 768px) {
+  .about-page {
+    flex-direction: row; /* Switch to side-by-side layout */
+    align-items: flex-start; /* Align to the top */
+    justify-content: center;
+  }
+
+  .about-image {
+    flex: 1; /* Share space */
+    margin-bottom: 0; /* Remove bottom spacing */
+    margin-right: 20px; /* Add spacing between the image and text */
+  }
+
+  .about-text {
+    flex: 2; /* Allow text to take more space */
+    text-align: left; /* Align text to the left */
+  }
   .contact-container {
     flex-wrap: nowrap; /* Prevent wrapping on larger screens */
   }
@@ -206,28 +227,4 @@ input, textarea {
     max-width: 45%; /* Restore layout for larger screens */
     margin: 0; /* Remove extra margin for larger screens */
   }
-  .about-page {
-    flex-wrap: nowrap; /* Disable wrapping for larger screens */
-    flex-direction: row; /* Side-by-side layout */
-    align-items: flex-start;
-  }
-
-  .about-image {
-    flex: 1; /* Take equal space */
-    margin: 0; /* Reset margin */
-    padding-bottom: 0; /* Remove bottom spacing */
-    padding-right: 20px; /* Add space between image and text */
-  }
-
-  .about-text {
-    flex: 2; /* Take more space for text */
-    text-align: left; /* Align text to the left */
-  }
-}
-
-
-/* footer css */
-footer{
-  position: fixed;
-  bottom: 0;
 }
