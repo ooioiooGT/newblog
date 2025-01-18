@@ -146,6 +146,7 @@ input, textarea {
 .about-page{
   display: flex;
   align-items: flex-start;
+  flex-direction: column;
   justify-content: center;
   padding-top: 0%;
   padding-left: 15%;
@@ -168,32 +169,61 @@ input, textarea {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 20%; /* Keep some padding for responsiveness */
-  min-height: 100vh; /* Center vertically */
+  padding: 0 5%; /* Reduce padding for smaller screens */
+  min-height: 100vh; /* Center content vertically */
   text-align: center;
 }
 
 .contact-container {
   display: flex;
-  gap: 40px; /* Add spacing between the form and the text */
+  gap: 40px;
   justify-content: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
   text-align: center;
 }
-.contact-form{
-  flex: 1;
-  max-width: 45%;
-  text-align: left;
-}
-.contact-details {
-  flex: 1;
-  max-width: 45%;
-  text-align: left;
-}
-.social-icons img {
- width: 10%;
+
+.contact-form, .contact-details {
+  flex: 1 1 100%; /* Allow full-width on smaller screens */
+  max-width: 500px; /* Limit the width */
+  margin: 10px 0; /* Add spacing between sections */
 }
 
+.contact-details {
+  text-align: left; /* Align text for readability */
+}
+
+.social-icons img {
+  width: 10%; /* Keep icons responsive */
+}
+
+@media (min-width: 768px) {
+  .contact-container {
+    flex-wrap: nowrap; /* Prevent wrapping on larger screens */
+  }
+  
+  .contact-form, .contact-details {
+    flex: 1; /* Equal spacing for desktop */
+    max-width: 45%; /* Restore layout for larger screens */
+    margin: 0; /* Remove extra margin for larger screens */
+  }
+  .about-page {
+    flex-wrap: nowrap; /* Disable wrapping for larger screens */
+    flex-direction: row; /* Side-by-side layout */
+    align-items: flex-start;
+  }
+
+  .about-image {
+    flex: 1; /* Take equal space */
+    margin: 0; /* Reset margin */
+    padding-bottom: 0; /* Remove bottom spacing */
+    padding-right: 20px; /* Add space between image and text */
+  }
+
+  .about-text {
+    flex: 2; /* Take more space for text */
+    text-align: left; /* Align text to the left */
+  }
+}
 
 
 /* footer css */
