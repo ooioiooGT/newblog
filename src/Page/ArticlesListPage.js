@@ -1,6 +1,9 @@
+
 const ArticlesListPage = () =>{ 
     return (
-        <h1> This is ArticlesListPage</h1>
+        <>
+        test
+        </>
     )
 }
 export default ArticlesListPage;
