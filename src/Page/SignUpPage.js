@@ -14,6 +14,7 @@ const SignUpPage = () => {
                 return;
             }
             await createUserWithEmailAndPassword(getAuth(), email, password  );
+            console.log("sign up success!")
             navigate("/articles");
         }catch(e){
             setError(e.message);
