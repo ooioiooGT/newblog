@@ -3,8 +3,7 @@ import useArticle from "../hooks/article";
 
 const ArticlePage = () => {
     const { articleId } = useParams();
-    const {article, loading }= useArticle(articleId);
-
+    const {article, loading , comments}= useArticle(articleId);
     if (loading) return <p> Loading ... </p>
 
 
@@ -16,7 +15,16 @@ const ArticlePage = () => {
                 <p>{article.likes}</p>
             </div>
             <p>{article.content}</p> 
-            <h2>Comments:</h2>       
+            <h2>Comments:</h2> 
+            {comments.map((comment, index) =>
+                <div key={index}>
+                    <h3>{comment.username}</h3>
+                    <h4>{comment.time}</h4>
+                    <p>{comment.comment}</p>
+
+                </div>
+            )}
+
         </div>
     );
 };
