@@ -4,9 +4,10 @@ import db from "../index";
 
 const useArticles = () => {
     const [articles, setArticles] = useState([]);
-
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         const fetchArticles = async () => {
+            setLoading(true);
             try {
                 const querySnapshot = await getDocs(collection(db, "articles"));
                 const fetchedArticles = querySnapshot.docs.map((doc) => ({
@@ -17,13 +18,13 @@ const useArticles = () => {
                 setArticles(fetchedArticles);
             } catch (error) {
                 console.error("Error fetching articles: ", error);
-            }
+            }setLoading(false);
         };
 
         fetchArticles();
     }, []); 
 
-    return articles; 
+    return {articles, loading}; 
 };
 
 export default useArticles;

@@ -17,7 +17,7 @@ const ArticlePage = () => {
             <p>{article.content}</p> 
             <h2>Comments:</h2> 
             {comments.map((comment, index) =>
-                <div key={index}>
+                <div>
                     <h3>{comment.username}</h3>
                     <h4>{comment.time}</h4>
                     <p>{comment.comment}</p>
