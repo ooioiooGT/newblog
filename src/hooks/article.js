@@ -16,7 +16,7 @@ const useArticle = (articleId) => {
                     id: doc.id,
                     username: doc.data().username,
                     comment: doc.data().comment,
-                    time:doc.data().time.toDate().toLocaleString()
+                    time:doc.data().time.toDate().toLocaleDateString()
 
                 }))
                 if (docSnapshot.exists()) {
