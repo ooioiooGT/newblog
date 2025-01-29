@@ -18,7 +18,6 @@ const ArticlePage = () => {
     const { comments, loading: commentsLoading, refreshComments  } = useComments(articleId);
     const [isLiked, setIsLiked] = useState(false);
     const [likes, setlikes] = useState(0);
-
     useEffect(() =>{
         if (article && article.likes !== undefined) {
             setlikes(article.likes);
@@ -31,7 +30,6 @@ const ArticlePage = () => {
     };
     const liked = async() => {
         const newLikes = article.likes + 1;
-        console.log(likes)
         await updateDoc(doc(db , "articles", articleId), {likes: newLikes})
         setlikes(newLikes)
         setIsLiked(!isLiked); // Toggle the like state
@@ -39,7 +37,7 @@ const ArticlePage = () => {
 
     return (
         <div>
-            <h1>{article.title}</h1>
+            <h1>{article.title}</h1><p>{article.timestamp ? article.timestamp.toDate().toLocaleDateString() : 'No Date Available'}</p>
             <div className="like-section">
                 <img  
                     src={isLiked ? red_heart : heart} 
