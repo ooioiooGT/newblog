@@ -197,8 +197,14 @@ padding: 10%;
   padding: 10px;
 }
 /* article page */
+.like-section img {
+  padding-right: 5px;
+  vertical-align: middle;
+}
+.like-section p {
+  margin: 0;
 
-
+}
 /* footer css */
 footer{
   position: fixed;

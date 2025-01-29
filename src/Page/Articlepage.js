@@ -3,6 +3,9 @@ import useArticle from "../hooks/article";
 import useUser from "../hooks/useUser";
 import CommentFrom from "../components/CommentFrom";
 import useComments from "../hooks/getComments";
+import heart from "../asset/heart.png"
+import red_heart from "../asset/red heart.png";
+import { useState } from "react";
 
 
 const ArticlePage = () => {
@@ -11,19 +14,27 @@ const ArticlePage = () => {
     const navigate = useNavigate();
     const { article, loading: articleLoading } = useArticle(articleId);
     const { comments, loading: commentsLoading, refreshComments  } = useComments(articleId);
-
+    const [isLiked, setIsLiked] = useState(false);
 
 
     if (articleLoading || commentsLoading) return <p> Loading ... </p>
     const handleNewComment = () => {
         refreshComments();
     };
+    const liked = () => {
+        setIsLiked(!isLiked); // Toggle the like state
+    };
 
     return (
         <div>
             <h1>{article.title}</h1>
             <div className="like-section">
-                <button>Like</button>
+                <img  
+                    src={isLiked ? red_heart : heart} 
+                    alt={isLiked ? "Red Heart" : "White Heart"} 
+                    style={{ width: "24px", height: "24px" }}
+                    onClick={liked}
+                />
                 <p>{article.likes}</p>
             </div>
             <p>{article.content}</p> 
