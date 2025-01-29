@@ -8,6 +8,7 @@ import ArticlePage from './Page/Articlepage.js';
 import NavBar from './NavBar.js';
 import LoginPage from './Page/LoginPage.js';
 import SignUpPage from './Page/SignUpPage.js';
+import AddArticlePage from './Page/AddArticlePage.js';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path='/articles/:articleId' element={<ArticlePage/>}/>
             <Route path='/login' element={<LoginPage/>}/>
             <Route path='/signup' element={<SignUpPage/>}/>
+            <Route path='/add-article' element={<AddArticlePage/>}/>
           </Routes>
         </div>
         <footer>&copy;Gilber Chen 2025</footer>
