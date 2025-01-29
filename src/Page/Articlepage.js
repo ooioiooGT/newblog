@@ -2,14 +2,22 @@ import { useNavigate, useParams } from "react-router-dom";
 import useArticle from "../hooks/article";
 import useUser from "../hooks/useUser";
 import CommentFrom from "../components/CommentFrom";
+import useComments from "../hooks/getComments";
 
 
 const ArticlePage = () => {
     const { articleId } = useParams();
-    const {article, loading , comments}= useArticle(articleId);
     const {user} = useUser();
     const navigate = useNavigate();
-    if (loading) return <p> Loading ... </p>
+    const { article, loading: articleLoading } = useArticle(articleId);
+    const { comments, loading: commentsLoading, refreshComments  } = useComments(articleId);
+
+
+
+    if (articleLoading || commentsLoading) return <p> Loading ... </p>
+    const handleNewComment = () => {
+        refreshComments();
+    };
 
     return (
         <div>
@@ -20,7 +28,7 @@ const ArticlePage = () => {
             </div>
             <p>{article.content}</p> 
             {user 
-                ? <CommentFrom articleId={articleId}/>
+                ? <CommentFrom articleId={articleId} onCommentAdded={handleNewComment}/>
                 :<button onClick={()=>navigate("/login")}>Log in to add a comment</button>}
             <h2>Comments:</h2> 
             {comments.map((comment, index) =>

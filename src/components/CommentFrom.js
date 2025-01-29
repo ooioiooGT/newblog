@@ -3,10 +3,12 @@ import useUser from "../hooks/useUser";
 import { addDoc, collection,   serverTimestamp } from "firebase/firestore";
 import db from "../index";
 
-const CommentFrom = ({articleId}) => { 
+const CommentFrom = ({articleId, onCommentAdded }) => { 
     const {user} = useUser();
     const [commentText, setCommentText] = useState('');
     const addComment = async () => { 
+
+        if (!commentText.trim()) return;
         try{
             await addDoc(collection(db, "articles", articleId , "comments"), 
                 {username: user.email,
@@ -14,6 +16,7 @@ const CommentFrom = ({articleId}) => {
                 time: serverTimestamp(),
             })
             setCommentText('');
+            if (onCommentAdded) onCommentAdded();
         }catch(error){
             console.log("Error adding comment:", error)
         }
