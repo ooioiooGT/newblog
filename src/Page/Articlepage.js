@@ -5,7 +5,9 @@ import CommentFrom from "../components/CommentFrom";
 import useComments from "../hooks/getComments";
 import heart from "../asset/heart.png"
 import red_heart from "../asset/red heart.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { doc, updateDoc } from "firebase/firestore";
+import db from "../index";
 
 
 const ArticlePage = () => {
@@ -15,13 +17,23 @@ const ArticlePage = () => {
     const { article, loading: articleLoading } = useArticle(articleId);
     const { comments, loading: commentsLoading, refreshComments  } = useComments(articleId);
     const [isLiked, setIsLiked] = useState(false);
+    const [likes, setlikes] = useState(0);
 
+    useEffect(() =>{
+        if (article && article.likes !== undefined) {
+            setlikes(article.likes);
+        }
+    },[article])
 
     if (articleLoading || commentsLoading) return <p> Loading ... </p>
     const handleNewComment = () => {
         refreshComments();
     };
-    const liked = () => {
+    const liked = async() => {
+        const newLikes = article.likes + 1;
+        console.log(likes)
+        await updateDoc(doc(db , "articles", articleId), {likes: newLikes})
+        setlikes(newLikes)
         setIsLiked(!isLiked); // Toggle the like state
     };
 
@@ -35,7 +47,7 @@ const ArticlePage = () => {
                     style={{ width: "24px", height: "24px" }}
                     onClick={liked}
                 />
-                <p>{article.likes}</p>
+                <p>{likes}</p>
             </div>
             <p>{article.content}</p> 
             {user 
